@@ -1,9 +1,10 @@
 #include <avr/io.h>
 #include <stdlib.h>
 #include <stdio.h>
+#define F_CPU 16000000UL
 #include <util/delay.h> // Retardos por software – Macros: depende de F_CPU
 #include "lcd.h"
-#define F_CPU 16000000UL 
+
 
 uint8_t pedirTH(uint8_t* , uint8_t* , uint8_t* ,uint8_t* , uint8_t*);
 void leer8B(uint8_t*);
@@ -39,13 +40,14 @@ int main(void)
     {
 		
 		exito=pedirTH(&intRH,&decRH,&intT,&decT,&checkS);
-		if(1){
-			LCDstring("TEMP: ",6);
+		if(exito){
+			LCDclr();
+			LCDstring("HUMEDAD: ",9);
 			LCDescribeDato(intT,2);
 			LCDsendChar(',');
 			LCDescribeDato(decT,2);
 			LCDGotoXY(0,1);
-			LCDstring("HUMEDAD: ",9);
+			LCDstring("TEMP: ",6);
 			LCDescribeDato(intRH,2);
 			LCDsendChar(',');
 			LCDescribeDato(decRH,2);
@@ -53,15 +55,12 @@ int main(void)
 			LCDstring("Error en lectura",16);
 		}
 		_delay_ms(2000);
-		LCDclr();
-		LCDGotoXY(0,0);
-		
+		LCDGotoXY(0,0);		
     }
 }
 
-
 uint8_t pedirTH(uint8_t* intRH, uint8_t* decRH, uint8_t* intT,uint8_t* decT, uint8_t* checkS ){
-	int sum=0,i;
+	uint8_t sum=0,i;
 	
 	DDRC |= (1<<PINC0); 
 	PORTC |= (1<<PINC0);
@@ -71,48 +70,30 @@ uint8_t pedirTH(uint8_t* intRH, uint8_t* decRH, uint8_t* intT,uint8_t* decT, uin
 	PORTC |= (1<<PINC0);
 	_delay_us(30);
 	
-	
 	DDRC &= ~(1<<PINC0);
-	
-	//PORTC |= (1<<PINC0);
-	//while(PINC & (1<<PINC0)){}
-	//_delay_us();	
-	//while (PINC & (1<<PINC0)){}
-	//while(PINC & (1<<PINC0)){}
-
 	_delay_us(160);
 	
-	leer8B(&intRH);
-	leer8B(&decRH);
-	leer8B(&intT);
-	leer8B(&decT);
-	leer8B(&checkS);
+	leer8B(intRH);
+	leer8B(decRH);
+	leer8B(intT);
+	leer8B(decT);
+	leer8B(checkS);
 	
-	sum=(*intRH)+(*intT);
-	//LCDGotoXY(0,1);
-	//LCDescribeDato(checkS,8);
-	//LCDGotoXY(0,0);
-	if(sum!=checkS){return 0;}
-		
-	return 1;
+	sum=(*intRH)+(*decRH)+(*intT)+(*decT);
+
+	return sum==checkS;
 }
 
 void leer8B(uint8_t* auxBits){
-	int i,cant=0;
+	int i;
 	*auxBits=0;
 	for(i=0;i<8;i++){
-		//_delay_us(5);		
 		while((PINC & (1<<PINC0))==0){}
-		cant++;
 		_delay_us(40);
 		if((PINC & (1<<PINC0))==1){
 			*auxBits |= (1<<(7-i));
-			//_delay_us(30);
-			while((PINC & (1<<PINC0))==1){}
+			_delay_us(30);
 		}	
-		////dudoso
 	}
-	//LCDescribeDato(cant,1);
-
 }
 
