@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #define F_CPU 16000000UL
-#include <util/delay.h> // Retardos por software – Macros: depende de F_CPU
+#include <util/delay.h> // Retardos por software
 #include "lcd.h"
 #include "sensor.h"
 
@@ -10,37 +10,24 @@
 //uint8_t pedirTH(uint8_t* , uint8_t* , uint8_t* ,uint8_t* , uint8_t*);
 //void leer8B(uint8_t*);
 
-
-
 int main(void)
-{
-	
-	uint16_t tSubida, tBajada;
-	
-	//Se configura el timer en modo CTC con un prescaler de 1024
-	//TCCR1B = (1<<WGM12) | (1<<CS12) | (1<<CS10);	//ICP1 flanco subida. No prescaler
-	
-	//------Host's Signal------
-	//Para encuestar el sensor se lo configura:
-	//Pin como salida -> Timer como temporizador -> Enviar 0 (18ms) "start signal" y un 1 (20-40us) "wait for sensor's response"
-	//DDRC |= (1<<PINC0);	
-	
-	//TCCR1A=0;							//Modo normal
-	
-	
-	//------Sensor's signal-----
-	//DDRC se configura como entrada para recibir respuesta del sensor
+{	
 	uint8_t intRH,decRH,intT,decT,checkS,exito;
-	DDRC &= ~(1<<PINC0);
+	
+	//DDRC &= ~(1<<PINC0);
+	
+	//Inicio del LCD
 	LCDinit();
 	LCDclr();
 	LCDGotoXY(0,0);
 	
-	LCDstring("asd",3);
     while (1) 
     {
-		
+	
+		//Se llama a la función pedirTH para comenzar la configuracion del sensor y lectura de datos	
 		exito=pedirTH(&intRH,&decRH,&intT,&decT,&checkS);
+		
+		//Si se realizó una correcta lectura, la función pedirTH devuelve 1. Caso contrario hubo un error
 		if(exito){
 			LCDclr();
 			LCDstring("TEMP: ",6);
