@@ -123,6 +123,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="I2C.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="I2C.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lcd.c">
       <SubType>compile</SubType>
     </Compile>
@@ -136,6 +142,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="serialPort.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="serialPort.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UART.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

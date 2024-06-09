@@ -6,6 +6,8 @@ n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5
                               n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o (exit)
 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                               lcd.o (__do_copy_data)
+n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
                               lcd.o (__umulhisi3)
 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
@@ -15,10 +17,17 @@ Discarded input sections
 
  .data          0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
  .bss           0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
+ .text          0x00000000        0x0 I2C.o
+ .data          0x00000000        0x0 I2C.o
+ .bss           0x00000000        0x0 I2C.o
+ .text.i2c_init
+                0x00000000       0x12 I2C.o
  .text          0x00000000        0x0 lcd.o
  .data          0x00000000        0x0 lcd.o
  .bss           0x00000000        0x0 lcd.o
  .text.LCDhome  0x00000000        0x8 lcd.o
+ .text.LCDstring
+                0x00000000       0x30 lcd.o
  .text.CopyStringtoLCD
                 0x00000000       0x30 lcd.o
  .text.LCDshiftLeft
@@ -51,9 +60,62 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .bss.RX_Buffer
+                0x00000000        0x1 main.o
  .text          0x00000000        0x0 Sensor.o
  .data          0x00000000        0x0 Sensor.o
  .bss           0x00000000        0x0 Sensor.o
+ .text.leer8B   0x00000000       0x48 Sensor.o
+ .text.pedirTH  0x00000000       0xb8 Sensor.o
+ .debug_info    0x00000000      0x37a Sensor.o
+ .debug_abbrev  0x00000000      0x15a Sensor.o
+ .debug_loc     0x00000000      0x3a7 Sensor.o
+ .debug_aranges
+                0x00000000       0x28 Sensor.o
+ .debug_ranges  0x00000000       0x18 Sensor.o
+ .debug_line    0x00000000      0x1b7 Sensor.o
+ .debug_str     0x00000000      0x1e1 Sensor.o
+ .comment       0x00000000       0x31 Sensor.o
+ .debug_frame   0x00000000       0x68 Sensor.o
+ .text          0x00000000        0x0 serialPort.o
+ .data          0x00000000        0x0 serialPort.o
+ .bss           0x00000000        0x0 serialPort.o
+ .text.SerialPort_Init
+                0x00000000       0x14 serialPort.o
+ .text.SerialPort_TX_Enable
+                0x00000000        0xc serialPort.o
+ .text.SerialPort_TX_Interrupt_Enable
+                0x00000000        0xc serialPort.o
+ .text.SerialPort_TX_Interrupt_Disable
+                0x00000000        0xc serialPort.o
+ .text.SerialPort_RX_Enable
+                0x00000000        0xc serialPort.o
+ .text.SerialPort_RX_Interrupt_Enable
+                0x00000000        0xc serialPort.o
+ .text.SerialPort_Wait_For_TX_Buffer_Free
+                0x00000000        0xa serialPort.o
+ .text.SerialPort_Send_Data
+                0x00000000        0x6 serialPort.o
+ .text.SerialPort_Send_String
+                0x00000000       0x38 serialPort.o
+ .text.SerialPort_Wait_Until_New_Data
+                0x00000000        0xa serialPort.o
+ .text.SerialPort_Recive_Data
+                0x00000000        0x6 serialPort.o
+ .text.SerialPort_Send_uint8_t
+                0x00000000       0x56 serialPort.o
+ .text.SerialPort_send_int16_t
+                0x00000000       0xc8 serialPort.o
+ .debug_info    0x00000000      0x31e serialPort.o
+ .debug_abbrev  0x00000000      0x134 serialPort.o
+ .debug_loc     0x00000000      0x2a3 serialPort.o
+ .debug_aranges
+                0x00000000       0x80 serialPort.o
+ .debug_ranges  0x00000000       0x70 serialPort.o
+ .debug_line    0x00000000      0x29f serialPort.o
+ .debug_str     0x00000000      0x2cb serialPort.o
+ .comment       0x00000000       0x31 serialPort.o
+ .debug_frame   0x00000000      0x130 serialPort.o
  .text          0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .data          0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .bss           0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
@@ -100,6 +162,22 @@ Discarded input sections
                 0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
  .text.libgcc.fixed
                 0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
+ .text          0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc.mul
+                0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
  .text          0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .data          0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .bss           0x00000000        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
@@ -147,9 +225,11 @@ Linker script and memory map
 
 Address of section .data set to 0x800100
 LOAD n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
+LOAD I2C.o
 LOAD lcd.o
 LOAD main.o
 LOAD Sensor.o
+LOAD serialPort.o
 START GROUP
 END GROUP
 START GROUP
@@ -258,7 +338,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x7b0
+.text           0x00000000      0x67e
  *(.vectors)
  .vectors       0x00000000       0x68 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -304,6 +384,8 @@ END GROUP
  *(.init4)
  .init4         0x000000b4       0x16 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                 0x000000b4                __do_copy_data
+ .init4         0x000000ca       0x10 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+                0x000000ca                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -314,78 +396,83 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000000ca        0x8 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
+ .init9         0x000000da        0x8 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
  *(.init9)
  *(.text)
- .text          0x000000d2        0x4 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
-                0x000000d2                __vector_22
-                0x000000d2                __vector_1
-                0x000000d2                __vector_24
-                0x000000d2                __vector_12
-                0x000000d2                __bad_interrupt
-                0x000000d2                __vector_6
-                0x000000d2                __vector_3
-                0x000000d2                __vector_23
-                0x000000d2                __vector_25
-                0x000000d2                __vector_11
-                0x000000d2                __vector_13
-                0x000000d2                __vector_17
-                0x000000d2                __vector_19
-                0x000000d2                __vector_7
-                0x000000d2                __vector_5
-                0x000000d2                __vector_4
-                0x000000d2                __vector_9
-                0x000000d2                __vector_2
-                0x000000d2                __vector_21
-                0x000000d2                __vector_15
-                0x000000d2                __vector_8
-                0x000000d2                __vector_14
-                0x000000d2                __vector_10
-                0x000000d2                __vector_16
-                0x000000d2                __vector_18
-                0x000000d2                __vector_20
-                0x000000d6                . = ALIGN (0x2)
+ .text          0x000000e2        0x4 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
+                0x000000e2                __vector_22
+                0x000000e2                __vector_1
+                0x000000e2                __vector_24
+                0x000000e2                __vector_12
+                0x000000e2                __bad_interrupt
+                0x000000e2                __vector_6
+                0x000000e2                __vector_3
+                0x000000e2                __vector_23
+                0x000000e2                __vector_25
+                0x000000e2                __vector_11
+                0x000000e2                __vector_13
+                0x000000e2                __vector_17
+                0x000000e2                __vector_19
+                0x000000e2                __vector_7
+                0x000000e2                __vector_5
+                0x000000e2                __vector_4
+                0x000000e2                __vector_9
+                0x000000e2                __vector_2
+                0x000000e2                __vector_21
+                0x000000e2                __vector_15
+                0x000000e2                __vector_8
+                0x000000e2                __vector_14
+                0x000000e2                __vector_10
+                0x000000e2                __vector_16
+                0x000000e2                __vector_18
+                0x000000e2                __vector_20
+                0x000000e6                . = ALIGN (0x2)
  *(.text.*)
+ .text.i2c_start
+                0x000000e6       0x10 I2C.o
+                0x000000e6                i2c_start
+ .text.i2c_write
+                0x000000f6       0x14 I2C.o
+                0x000000f6                i2c_write
+ .text.i2c_read
+                0x0000010a       0x20 I2C.o
+                0x0000010a                i2c_read
+ .text.i2c_stop
+                0x0000012a        0x8 I2C.o
+                0x0000012a                i2c_stop
  .text.LCDsendChar
-                0x000000d6      0x130 lcd.o
-                0x000000d6                LCDsendChar
+                0x00000132      0x130 lcd.o
+                0x00000132                LCDsendChar
  .text.LCDsendCommand
-                0x00000206      0x128 lcd.o
-                0x00000206                LCDsendCommand
- .text.LCDclr   0x0000032e        0x8 lcd.o
-                0x0000032e                LCDclr
- .text.LCDstring
-                0x00000336       0x30 lcd.o
-                0x00000336                LCDstring
+                0x00000262      0x128 lcd.o
+                0x00000262                LCDsendCommand
+ .text.LCDclr   0x0000038a        0x8 lcd.o
+                0x0000038a                LCDclr
  .text.LCDGotoXY
-                0x00000366       0x1e lcd.o
-                0x00000366                LCDGotoXY
+                0x00000392       0x1e lcd.o
+                0x00000392                LCDGotoXY
  .text.LCDdefinechar
-                0x00000384       0x54 lcd.o
-                0x00000384                LCDdefinechar
- .text.LCDinit  0x000003d8       0xfe lcd.o
-                0x000003d8                LCDinit
+                0x000003b0       0x54 lcd.o
+                0x000003b0                LCDdefinechar
+ .text.LCDinit  0x00000404       0xfe lcd.o
+                0x00000404                LCDinit
  .text.LCDescribeDato
-                0x000004d6       0xc0 lcd.o
-                0x000004d6                LCDescribeDato
- .text.main     0x00000596       0xc6 main.o
-                0x00000596                main
- .text.leer8B   0x0000065c       0x48 Sensor.o
-                0x0000065c                leer8B
- .text.pedirTH  0x000006a4       0xb8 Sensor.o
-                0x000006a4                pedirTH
+                0x00000502       0xc0 lcd.o
+                0x00000502                LCDescribeDato
+ .text.main     0x000005c2       0x68 main.o
+                0x000005c2                main
  .text.libgcc.div
-                0x0000075c       0x28 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
-                0x0000075c                _div
-                0x0000075c                __divmodhi4
+                0x0000062a       0x28 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+                0x0000062a                _div
+                0x0000062a                __divmodhi4
  .text.libgcc.div
-                0x00000784       0x28 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
-                0x00000784                __udivmodhi4
-                0x000007ac                . = ALIGN (0x2)
+                0x00000652       0x28 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
+                0x00000652                __udivmodhi4
+                0x0000067a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000007ac        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x000007ac                _exit
-                0x000007ac                exit
+ .fini9         0x0000067a        0x0 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000067a                _exit
+                0x0000067a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -404,38 +491,36 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000007ac        0x4 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000067a        0x4 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000007b0                _etext = .
+                0x0000067e                _etext = .
 
-.data           0x00800100       0x22 load address 0x000007b0
+.data           0x00800100        0x0 load address 0x0000067e
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
- .rodata.str1.1
-                0x00800100       0x22 main.o
  *(.gnu.linkonce.r*)
-                0x00800122                . = ALIGN (0x2)
-                0x00800122                _edata = .
-                0x00800122                PROVIDE (__data_end, .)
+                0x00800100                . = ALIGN (0x2)
+                0x00800100                _edata = .
+                0x00800100                PROVIDE (__data_end, .)
 
-.bss            0x00800122        0x0
-                [!provide]                PROVIDE (__bss_start, .)
+.bss            0x00800100        0x0
+                0x00800100                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
-                [!provide]                PROVIDE (__bss_end, .)
-                0x000007b0                __data_load_start = LOADADDR (.data)
-                0x000007d2                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800100                PROVIDE (__bss_end, .)
+                0x0000067e                __data_load_start = LOADADDR (.data)
+                0x0000067e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800122        0x0
+.noinit         0x00800100        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800122                _end = .
+                0x00800100                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -477,10 +562,10 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 lcd.o
+ .comment       0x00000000       0x30 I2C.o
                                  0x31 (size before relaxing)
+ .comment       0x00000030       0x31 lcd.o
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 Sensor.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40
@@ -502,60 +587,60 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x110
+.debug_aranges  0x00000000      0x128
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0xc8 lcd.o
+                0x00000000       0x40 I2C.o
  .debug_aranges
-                0x000000c8       0x20 main.o
+                0x00000040       0xc8 lcd.o
  .debug_aranges
-                0x000000e8       0x28 Sensor.o
+                0x00000108       0x20 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x187c
+.debug_info     0x00000000     0x15ca
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0xbb7 lcd.o
- .debug_info    0x000011ab      0x357 main.o
- .debug_info    0x00001502      0x37a Sensor.o
+ .debug_info    0x000005f4      0x107 I2C.o
+ .debug_info    0x000006fb      0xbb7 lcd.o
+ .debug_info    0x000012b2      0x318 main.o
 
-.debug_abbrev   0x00000000      0xa6c
+.debug_abbrev   0x00000000      0x9ea
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_abbrev  0x000005a2      0x251 lcd.o
- .debug_abbrev  0x000007f3      0x11f main.o
- .debug_abbrev  0x00000912      0x15a Sensor.o
+ .debug_abbrev  0x000005a2       0x96 I2C.o
+ .debug_abbrev  0x00000638      0x251 lcd.o
+ .debug_abbrev  0x00000889      0x161 main.o
 
-.debug_line     0x00000000      0x9c5
+.debug_line     0x00000000      0x94a
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0x1a n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_line    0x0000001a      0x694 lcd.o
- .debug_line    0x000006ae      0x160 main.o
- .debug_line    0x0000080e      0x1b7 Sensor.o
+ .debug_line    0x0000001a      0x133 I2C.o
+ .debug_line    0x0000014d      0x694 lcd.o
+ .debug_line    0x000007e1      0x169 main.o
 
-.debug_frame    0x00000000      0x2d8
+.debug_frame    0x00000000      0x2c4
  *(.debug_frame)
- .debug_frame   0x00000000      0x23c lcd.o
- .debug_frame   0x0000023c       0x34 main.o
- .debug_frame   0x00000270       0x68 Sensor.o
+ .debug_frame   0x00000000       0x64 I2C.o
+ .debug_frame   0x00000064      0x23c lcd.o
+ .debug_frame   0x000002a0       0x24 main.o
 
-.debug_str      0x00000000      0x57e
+.debug_str      0x00000000      0x5c0
  *(.debug_str)
  .debug_str     0x00000000      0x208 n:/circuitos/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x31d lcd.o
+ .debug_str     0x00000208      0x157 I2C.o
+                                0x18b (size before relaxing)
+ .debug_str     0x0000035f      0x207 lcd.o
                                 0x366 (size before relaxing)
- .debug_str     0x00000525       0x3c main.o
-                                0x20f (size before relaxing)
- .debug_str     0x00000561       0x1d Sensor.o
-                                0x1e1 (size before relaxing)
+ .debug_str     0x00000566       0x5a main.o
+                                0x23d (size before relaxing)
 
-.debug_loc      0x00000000     0x126e
+.debug_loc      0x00000000      0xee2
  *(.debug_loc)
- .debug_loc     0x00000000      0xe19 lcd.o
- .debug_loc     0x00000e19       0xae main.o
- .debug_loc     0x00000ec7      0x3a7 Sensor.o
+ .debug_loc     0x00000000       0x67 I2C.o
+ .debug_loc     0x00000067      0xe19 lcd.o
+ .debug_loc     0x00000e80       0x62 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -575,11 +660,11 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xe0
+.debug_ranges   0x00000000       0xf8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0xb8 lcd.o
- .debug_ranges  0x000000b8       0x10 main.o
- .debug_ranges  0x000000c8       0x18 Sensor.o
+ .debug_ranges  0x00000000       0x30 I2C.o
+ .debug_ranges  0x00000030       0xb8 lcd.o
+ .debug_ranges  0x000000e8       0x10 main.o
 
 .debug_macro
  *(.debug_macro)
