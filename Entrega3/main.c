@@ -4,10 +4,11 @@
 #define F_CPU 16000000UL
 #include <util/delay.h> // Retardos por software – Macros: depende de F_CPU
 #include "lcd.h"
+#include "sensor.h"
 
 
-uint8_t pedirTH(uint8_t* , uint8_t* , uint8_t* ,uint8_t* , uint8_t*);
-void leer8B(uint8_t*);
+//uint8_t pedirTH(uint8_t* , uint8_t* , uint8_t* ,uint8_t* , uint8_t*);
+//void leer8B(uint8_t*);
 
 
 
@@ -42,12 +43,12 @@ int main(void)
 		exito=pedirTH(&intRH,&decRH,&intT,&decT,&checkS);
 		if(exito){
 			LCDclr();
-			LCDstring("HUMEDAD: ",9);
+			LCDstring("TEMP: ",6);
 			LCDescribeDato(intT,2);
 			LCDsendChar(',');
 			LCDescribeDato(decT,2);
 			LCDGotoXY(0,1);
-			LCDstring("TEMP: ",6);
+			LCDstring("HUMEDAD: ",9);
 			LCDescribeDato(intRH,2);
 			LCDsendChar(',');
 			LCDescribeDato(decRH,2);
@@ -59,10 +60,12 @@ int main(void)
     }
 }
 
+/*
+
 uint8_t pedirTH(uint8_t* intRH, uint8_t* decRH, uint8_t* intT,uint8_t* decT, uint8_t* checkS ){
 	uint8_t sum=0,i;
 	
-	DDRC |= (1<<PINC0); 
+	DDRC |= (1<<PINC0);
 	PORTC |= (1<<PINC0);
 	_delay_us(5);
 	PORTC &= ~(1<<PINC0);
@@ -81,7 +84,7 @@ uint8_t pedirTH(uint8_t* intRH, uint8_t* decRH, uint8_t* intT,uint8_t* decT, uin
 	
 	sum=(*intRH)+(*decRH)+(*intT)+(*decT);
 
-	return sum==checkS;
+	return sum==(*checkS);
 }
 
 void leer8B(uint8_t* auxBits){
@@ -96,4 +99,4 @@ void leer8B(uint8_t* auxBits){
 		}	
 	}
 }
-
+*/
