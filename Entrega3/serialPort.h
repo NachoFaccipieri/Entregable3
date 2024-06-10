@@ -35,6 +35,7 @@
 	void SerialPort_Send_Data(char);
 	void SerialPort_Send_String(char *);
 	void SerialPort_Send_uint8_t(uint8_t);
+	void SerialPort_Send2_uint8_t(uint8_t);
 	void SerialPort_send_int16_t(int val,unsigned int field_length);
 
 	// Recepcion

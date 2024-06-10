@@ -103,6 +103,17 @@ void SerialPort_Send_uint8_t(uint8_t num){
 	SerialPort_Send_Data('0'+ num%10);
 }
 
+void SerialPort_Send2_uint8_t(uint8_t num) {
+	char buffer[4]; // Para almacenar el número convertido a string (máximo 3 dígitos + terminador nulo)
+	itoa(num, buffer, 10); // Convierte el número a string en base 10
+
+	// Enviar cada carácter del buffer
+	for (uint8_t i = 0; buffer[i] != '\0'; i++) {
+		SerialPort_Wait_For_TX_Buffer_Free();
+		SerialPort_Send_Data(buffer[i]);
+	}
+}
+
 /***************************************************************
 	This function writes a integer type value to UART
 	Arguments:

@@ -20,7 +20,7 @@ main.d main.o: .././main.c \
  n:\circuitos\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  .././lcd.h \
  n:\circuitos\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
- .././sensor.h
+ .././sensor.h .././SerialPort.h
 
 n:\circuitos\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -65,3 +65,5 @@ n:\circuitos\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 n:\circuitos\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h:
 
 .././sensor.h:
+
+.././SerialPort.h:

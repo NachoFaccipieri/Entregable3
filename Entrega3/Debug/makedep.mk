@@ -12,5 +12,3 @@ Sensor.c
 
 serialPort.c
 
-UART.c
-
