@@ -8,6 +8,8 @@ lcd.c
 
 main.c
 
+RTC.c
+
 Sensor.c
 
 serialPort.c

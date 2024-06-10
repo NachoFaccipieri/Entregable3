@@ -6,66 +6,70 @@
 #include <util/delay.h> // Retardos por software
 #include "lcd.h"
 #include "sensor.h"
-
+#include "I2C.h"
+#include "RTC.h"
 #include "SerialPort.h"
+
 #define BR9600 (0x67)	// 0x67=103 configura BAUDRATE=9600@16MHz
 
 //comunicación con la ISR
 volatile char RX_Buffer=0;
 uint8_t dejarDeRecibir = 0;
+RTC_t tiempo;
 
 void Iniciar_Sistema(void);
 void chequeoEntrada(void);
 
-
 int main(void)
-{	
+{		
 	uint8_t intRH,decRH,intT,decT,checkS,exito;
 	
-	uint8_t sec, min, hs, dia, date, mes, anio, i;
-	
 	Iniciar_Sistema();
+	RTC_Init();
+	tiempo.fecha.Day = dec_to_bcd((10));
+	tiempo.fecha.Month = dec_to_bcd((06));
+	tiempo.fecha.Year = dec_to_bcd((24));
+	tiempo.hora.Second  = dec_to_bcd(20);
+	tiempo.hora.Minute= dec_to_bcd(48);
+	tiempo.hora.Hour  = dec_to_bcd(15);
+	RTC_SetTime(&tiempo);
 	
     while (1) 
     {
-
-		
 		chequeoEntrada();	
 		if(!dejarDeRecibir){
 			//Se llama a la función pedirTH para comenzar la configuracion del sensor y lectura de datos
 			exito=pedirTH(&intRH,&decRH,&intT,&decT,&checkS);
-			
-			i2c_start();
-			i2c_write(0b11010001);
-			i2c_write(0x00);
-			sec = i2c_read(1);
-			min = i2c_read(1);
-			hs = i2c_read(1);
-			dia= i2c_read(1);
-			date = i2c_read(1);
-			mes = i2c_read(1);
-			anio = i2c_read(1);
-			i2c_stop();
-			
-			sec = sec & 0x7F;
-			min = min & 0x7F;
 					
 			//Si se realizó una correcta lectura, la función pedirTH devuelve 1. Caso contrario hubo un error
 			if(exito){
+				RTC_GetHora(&tiempo.hora);
+				RTC_GetFecha(&tiempo.fecha);
 				SerialPort_Send_String("TEMP: ");
 				//SerialPort_Send_Data("A");
 				SerialPort_Send2_uint8_t(intT);
-				SerialPort_Send_String("\n\rHUMEDAD: ");
+				SerialPort_Send_String("   HUMEDAD: ");
 				SerialPort_Send2_uint8_t(intRH);
 				SerialPort_Send_String("\n\r");
-				SerialPort_Send_String("Hora: ");
-				SerialPort_Send2_uint8_t(sec);
-				SerialPort_Send2_uint8_t(min);
+				SerialPort_Send_String("Fecha: ");
+				SerialPort_Send2_uint8_t(bcd_to_dec(tiempo.fecha.Day));
+				SerialPort_Send_String("/");
+				SerialPort_Send2_uint8_t(bcd_to_dec(tiempo.fecha.Month));
+				SerialPort_Send_String("/");
+				SerialPort_Send2_uint8_t(bcd_to_dec(tiempo.fecha.Year));
+				//SerialPort_Send_String("\n\r");
+				SerialPort_Send_String("   Hora: ");
+				SerialPort_Send2_uint8_t(bcd_to_dec(tiempo.hora.Hour));
+				SerialPort_Send_String(":");
+				SerialPort_Send2_uint8_t(bcd_to_dec(tiempo.hora.Minute));
+				SerialPort_Send_String(":");
+				SerialPort_Send2_uint8_t(bcd_to_dec(tiempo.hora.Second));
+				
 				SerialPort_Send_String("\n\r");
-				}else{
-				SerialPort_Send_String("\n\rERROR DE LECTURA");
+			}else{
+				SerialPort_Send_String("\n\rERROR DE LECTURA\n\r");
 			}
-			_delay_ms(1000);		
+			_delay_ms(2000);		
 		}
     }
 }
@@ -98,23 +102,3 @@ void chequeoEntrada(){
 ISR(USART_RX_vect){
 	RX_Buffer = UDR0; //la lectura del UDR borra flag RXC
 }
-
-
-/*		
-i2c_start();
-i2c_write(0b11010001);
-sec = i2c_read(1);
-min = i2c_read(1);
-hs = i2c_read(1);
-dia= i2c_read(1);
-date = i2c_read(1);
-mes = i2c_read(1);
-anio = i2c_read(1);
-i2c_stop();
-
-segsUn = guardar & 0b00001111;
-segsDec = guardar & 0b01110000;
-segs = segsDec*10;
-segs = segs + segsUn;
-LCDescribeDato(segs,2);
-*/
